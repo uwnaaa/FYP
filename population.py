@@ -22,3 +22,4 @@ plt.xticks(rotation=90)  # Rotate state names for better readability
 
 plt.tight_layout()
 plt.show()
+st.pyplot(plt.gcf())
