@@ -1,3 +1,11 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the data from a CSV file into a pandas DataFrame
+df = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/population_malaysia.csv')
+
+df
+
 # Extracting data for plotting
 states = df['state']
 populations = df['population']
