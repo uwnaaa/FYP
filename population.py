@@ -1,4 +1,4 @@
-
+import streamlit as st
 import matplotlib.pyplot as plt
 
 # Population data for the specified states
