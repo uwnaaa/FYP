@@ -1,4 +1,4 @@
-pip install census
+
 import matplotlib.pyplot as plt
 
 # Population data for the specified states
