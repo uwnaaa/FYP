@@ -34,3 +34,5 @@ plt.title('Population by State in Malaysia')
 plt.gca().invert_yaxis()  # Invert y-axis to have states with highest population at the top
 plt.tight_layout()
 plt.show()
+
+st.pyplot(plt.gcf())
