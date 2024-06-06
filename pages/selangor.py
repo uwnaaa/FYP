@@ -6,7 +6,6 @@ URL_DATA = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
 df = pd.read_parquet(URL_DATA)
 if 'date' in df.columns: df['date'] = pd.to_datetime(df['date'])
 
-print(df)
 # Define the list of districts in Selangor
 selangor_districts = [
     'Gombak', 'Ulu Langat', 'Ulu Selangor', 'Klang', 'Kuala Langat',
