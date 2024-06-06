@@ -94,6 +94,7 @@ with tab3:
 
 
 ############################################
+st.header('Income and Expenditure by Selangor and Perlis', divider='rainbow')
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
@@ -134,6 +135,7 @@ st.pyplot(plt.gcf())
 
 
 ######################################
+
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
