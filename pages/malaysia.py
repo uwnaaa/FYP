@@ -110,3 +110,32 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 st.pyplot(plt.gcf())
+
+
+######################################
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Assuming you have data in a dictionary format like this:
+state_data = {
+    'Selangor': {'poverty_rate': 1.5},
+    'Perlis': {'poverty_rate': 4.0},
+}
+
+# Extracting data for plotting
+states = list(state_data.keys())
+poverty_rates = [state_data[state]['poverty_rate'] for state in states]
+
+# Plotting
+plt.figure(figsize=(8, 6))
+
+# Bar chart for Poverty Rate
+plt.bar(states, poverty_rates, color='red', edgecolor='black', alpha=0.7)
+plt.xlabel('States')
+plt.ylabel('Poverty Rate')
+plt.title('Poverty Rate by State')
+
+plt.tight_layout()
+plt.show()
+st.pyplot(plt.gcf())
