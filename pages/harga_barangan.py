@@ -1,6 +1,6 @@
 import pandas as pd
-df = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_ayam.csv')
-df
+df_ayam = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_ayam.csv')
+df_ayam.drop(columns=['premise', 'address', 'state'])
 
 
 
