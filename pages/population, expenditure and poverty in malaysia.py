@@ -58,7 +58,7 @@ with tab2:
    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
    st.header("Income by State")
    # Bar chart for income
-   plt.subplot(3, 1, 1)
+   plt.subplot()
    plt.bar(states, income, color='skyblue', edgecolor='black', alpha=0.7)
    plt.xlabel('States')
    plt.ylabel('Income')
