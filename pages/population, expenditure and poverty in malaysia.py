@@ -49,9 +49,17 @@ poverty = df['poverty']
 plt.figure(figsize=(12, 18))
 
 tab1 = st.tabs(["Income by State"])
-with tab1:
    st.header("Income by State")
    # Bar chart for income
+   plt.subplot(3, 1, 1)
+   plt.bar(states, income, color='skyblue', edgecolor='black', alpha=0.7)
+   plt.xlabel('States')
+   plt.ylabel('Income')
+   plt.title('Income by State')
+   plt.xticks(rotation=90)  # Rotate state names for better readability
+   plt.tight_layout()
+   plt.show()
+   st.pyplot(plt.gcf())
   
    
 tab2 = st.tabs(["Expenditure by State"])
