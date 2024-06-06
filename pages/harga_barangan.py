@@ -168,6 +168,15 @@ plt.show()
 st.pyplot(plt.gcf())
 
 
+#######################################
+import pandas as pd
+
+URL_DATA = 'https://raw.githubusercontent.com/uwnaaa/FYP/main/selangor.csv'
+
+df = pd.read_csv(URL_DATA)
+if 'date' in df.columns: df['date'] = pd.to_datetime(df['date'])
+df.loc[3:]
+df
 
 
 
