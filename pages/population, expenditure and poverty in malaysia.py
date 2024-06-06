@@ -1,5 +1,6 @@
 import streamlit as st
-
+st.set_page_config(
+   page_title="Population in Malaysia",)
 st.header('Population in Malaysia', divider='rainbow')
 
 import streamlit as st
