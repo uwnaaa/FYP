@@ -65,6 +65,7 @@ ax.legend(title='Premise Type', loc='upper right')
 
 plt.tight_layout()
 plt.show()
+st.pyplot(plt.gcf())
 
 
 
