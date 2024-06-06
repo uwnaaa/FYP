@@ -1,5 +1,5 @@
 import numpy as np
-
+df = pd_read.csv
 # Extracting data for plotting
 premise_type = df_ayam['premise_type']
 district = df_ayam['district']
