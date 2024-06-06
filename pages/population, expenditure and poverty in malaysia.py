@@ -58,6 +58,8 @@ with tab1:
    plt.ylabel('Income')
    plt.title('Income by State')
    plt.xticks(rotation=90)  # Rotate state names for better readability
+   plt.tight_layout()
+   plt.show()
    st.pyplot(plt.gcf())
    
 tab2 = st.tabs(["Expenditure by State"])
@@ -70,6 +72,8 @@ with tab2:
    plt.ylabel('Expenditure')
    plt.title('Expenditure by State')
    plt.xticks(rotation=90)  # Rotate state names for better readability
+   plt.tight_layout()
+   plt.show()
    st.pyplot(plt.gcf())
 
 tab3 = st.tabs(["Poverty by State"])
@@ -82,11 +86,10 @@ with tab3:
    plt.ylabel('Poverty')
    plt.title('Poverty by State')
    plt.xticks(rotation=90)  # Rotate state names for better readability
-   st.pyplot(plt.gcf())
-
    plt.tight_layout()
    plt.show()
    st.pyplot(plt.gcf())
+
 
 
 ############################################
