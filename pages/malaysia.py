@@ -74,8 +74,8 @@ st.pyplot(plt.gcf())
 
 ############################################
 import streamlit as st
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Assuming you have data in a dictionary format like this:
 state_data = {
