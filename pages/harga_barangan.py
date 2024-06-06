@@ -19,6 +19,7 @@ df_sayur = df_sayur.drop(columns=['premise', 'address', 'state'])
 df_sayur
 
 ###############################
+import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
