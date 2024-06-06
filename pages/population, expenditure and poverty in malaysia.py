@@ -62,8 +62,6 @@ with tab1:
    plt.show()
    st.pyplot(plt.gcf())
   
-   
-tab2 = st.tabs(["Expenditure by State"])
 with tab2:
    st.header("Expenditure by State")
    plt.figure(figsize=(12, 18))
@@ -79,7 +77,6 @@ with tab2:
    plt.show()
    st.pyplot(plt.gcf())
 
-tab3 = st.tabs(["Poverty by State"])
 with tab3:
    st.header("Poverty by State")
    plt.figure(figsize=(12, 18))
