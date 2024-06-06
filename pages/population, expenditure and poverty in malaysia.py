@@ -47,7 +47,6 @@ poverty = df['poverty']
 
 # Plotting
 tab1, tab2, tab3 = st.tabs(["Income by State", "Expenditure by State", "Poverty by State"])
-tab1 = st.tabs(["Income by State"])
 with tab1:
    st.header("Income by State")
    plt.figure(figsize=(12, 18))
