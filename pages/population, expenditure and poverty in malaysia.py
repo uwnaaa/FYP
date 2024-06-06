@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.header('Population', divider='rainbow')
+st.header('Population in Malaysia', divider='rainbow')
 
 import streamlit as st
 import pandas as pd
@@ -30,6 +30,7 @@ plt.show()
 st.pyplot(plt.gcf())
 
 ##########################################
+st.header('Income, Expenditure and Poverty in Malaysia', divider='rainbow')
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -47,6 +48,10 @@ poverty = df['poverty']
 # Plotting
 plt.figure(figsize=(12, 18))
 
+tab1, tab2, tab3 = st.tabs(["Income by State", "Expenditure by State", "Poverty by State"])
+
+with tab1:
+   st.header("Incoe by State")
 # Bar chart for income
 plt.subplot(3, 1, 1)
 plt.bar(states, income, color='skyblue', edgecolor='black', alpha=0.7)
