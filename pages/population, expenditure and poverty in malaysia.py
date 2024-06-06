@@ -59,26 +59,37 @@ with tab1:
    plt.ylabel('Income')
    plt.title('Income by State')
    plt.xticks(rotation=90)  # Rotate state names for better readability
+   st.pyplot(plt.gcf())
+   
+tab2 = st.tabs(["Expenditure by State"])
 
-# Bar chart for expenditure
-plt.subplot(3, 1, 2)
-plt.bar(states, expenditure, color='salmon', edgecolor='black', alpha=0.7)
-plt.xlabel('States')
-plt.ylabel('Expenditure')
-plt.title('Expenditure by State')
-plt.xticks(rotation=90)  # Rotate state names for better readability
+with tab2:
+   st.header("Expenditure by State")
+   # Bar chart for expenditure
+   plt.subplot(3, 1, 2)
+   plt.bar(states, expenditure, color='salmon', edgecolor='black', alpha=0.7)
+   plt.xlabel('States')
+   plt.ylabel('Expenditure')
+   plt.title('Expenditure by State')
+   plt.xticks(rotation=90)  # Rotate state names for better readability
+   st.pyplot(plt.gcf())
 
-# Bar chart for poverty
-plt.subplot(3, 1, 3)
-plt.bar(states, poverty, color='lightgreen', edgecolor='black', alpha=0.7)
-plt.xlabel('States')
-plt.ylabel('Poverty')
-plt.title('Poverty by State')
-plt.xticks(rotation=90)  # Rotate state names for better readability
+tab3 = st.tabs(["Poverty by State"])
 
-plt.tight_layout()
-plt.show()
-st.pyplot(plt.gcf())
+with tab3:
+   st.header("Poverty by State")
+   # Bar chart for poverty
+   plt.subplot(3, 1, 3)
+   plt.bar(states, poverty, color='lightgreen', edgecolor='black', alpha=0.7)
+   plt.xlabel('States')
+   plt.ylabel('Poverty')
+   plt.title('Poverty by State')
+   plt.xticks(rotation=90)  # Rotate state names for better readability
+   st.pyplot(plt.gcf())
+
+   plt.tight_layout()
+   plt.show()
+   st.pyplot(plt.gcf())
 
 
 ############################################
