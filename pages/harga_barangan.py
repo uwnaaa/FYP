@@ -20,6 +20,7 @@ df_sayur
 
 ###############################
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Extracting data for plotting
 premise_type = df_ayam['premise_type']
