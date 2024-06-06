@@ -176,6 +176,16 @@ df = pd.read_csv(URL_DATA)
 df.loc[3:]
 
 
+##############################################
+import pandas as pd
+selected_columns = ['income_mean', 'expenditure_mean', 'poverty', 'mean_ayam', 'mean buah', 'mean sayur']
+df_selected = df[selected_columns]
+
+# Compute the correlation matrix for the selected columns
+correlation_matrix = df_selected.corr()
+(correlation_matrix)
+
+
 
 
 
