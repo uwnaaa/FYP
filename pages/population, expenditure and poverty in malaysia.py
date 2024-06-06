@@ -46,37 +46,13 @@ expenditure = df['expenditure_mean']
 poverty = df['poverty']
 
 # Plotting
-plt.figure(figsize=(12, 18))
-tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
-
-with tab1:
-   st.header("A cat")
-   st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
-
-with tab2:
-   st.header("A dog")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-   st.header("Income by State")
-   # Bar chart for income
-   plt.subplot()
-   plt.bar(states, income, color='skyblue', edgecolor='black', alpha=0.7)
-   plt.xlabel('States')
-   plt.ylabel('Income')
-   plt.title('Income by State')
-   plt.xticks(rotation=90)  # Rotate state names for better readability
-   plt.tight_layout()
-   plt.show()
-   st.pyplot(plt.gcf())
-
-with tab3:
-   st.header("An owl")
-   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 tab1 = st.tabs(["Income by State"])
 with tab1:
    st.header("Income by State")
+   plt.figure(figsize=(12, 18))
    # Bar chart for income
-   plt.subplot(3, 1, 1)
+   plt.subplot()
    plt.bar(states, income, color='skyblue', edgecolor='black', alpha=0.7)
    plt.xlabel('States')
    plt.ylabel('Income')
@@ -90,8 +66,10 @@ with tab1:
 tab2 = st.tabs(["Expenditure by State"])
 with tab2:
    st.header("Expenditure by State")
+   plt.figure(figsize=(12, 18))
+
    # Bar chart for expenditure
-   plt.subplot(3, 1, 2)
+   plt.subplot()
    plt.bar(states, expenditure, color='salmon', edgecolor='black', alpha=0.7)
    plt.xlabel('States')
    plt.ylabel('Expenditure')
@@ -104,8 +82,10 @@ with tab2:
 tab3 = st.tabs(["Poverty by State"])
 with tab3:
    st.header("Poverty by State")
+   plt.figure(figsize=(12, 18))
+
    # Bar chart for poverty
-   plt.subplot(3, 1, 3)
+   plt.subplot()
    plt.bar(states, poverty, color='lightgreen', edgecolor='black', alpha=0.7)
    plt.xlabel('States')
    plt.ylabel('Poverty')
