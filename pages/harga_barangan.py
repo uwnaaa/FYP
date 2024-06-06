@@ -1,12 +1,12 @@
 import numpy as np
 
 # Extracting data for plotting
-premise_type = df_ayam['premise_type']
-district = df_ayam['district']
-price = df_ayam['price']
+premise_type = df_buah['premise_type']
+district = df_buah['district']
+price = df_buah['price']
 
 # Calculate average price for each combination of district and premise type
-avg_price = df_ayam.groupby(['district', 'premise_type'])['price'].mean().unstack()
+avg_price = df_buah.groupby(['district', 'premise_type'])['price'].mean().unstack()
 
 # Extracting unique districts and premise types
 districts = avg_price.index
@@ -33,7 +33,7 @@ for i, premise_type in enumerate(premise_types):
 # Adding labels and title
 ax.set_xlabel('Districts')
 ax.set_ylabel('Average Price')
-ax.set_title('Average Price Ayam by Premise Type and District')
+ax.set_title('Average Price Buah by Premise Type and District')
 ax.set_xticks(x)
 ax.set_xticklabels(districts)
 
@@ -42,4 +42,5 @@ ax.legend(title='Premise Type', loc='upper right')
 
 plt.tight_layout()
 plt.show()
+
 
