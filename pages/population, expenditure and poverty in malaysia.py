@@ -55,7 +55,8 @@ with tab1:
 
 with tab2:
    st.header("A dog")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+   st.image(
+      https://static.streamlit.io/examples/dog.jpg", width=200)
    st.header("Income by State")
    # Bar chart for income
    plt.subplot(3, 1, 1)
@@ -70,7 +71,7 @@ with tab2:
 
 with tab3:
    st.header("An owl")
-   st.image("https://static.streamlit.io/exa
+   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 tab1 = st.tabs(["Income by State"])
 with tab1:
