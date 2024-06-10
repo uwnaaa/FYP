@@ -19,11 +19,7 @@ df_sayur = df_sayur.drop(columns=['premise', 'address', 'state'])
 df_sayur
 
 ###############################
-import streamlit as st
-st.set_page_config(
-   page_title="Average Price for Ayam, Buah and Sayur by Premise type and Distrcit",)
-st.header('Average Price for Chicken, Fruit and Vegetables by Premise type and Distrcit', divider='rainbow')
-
+st.header('Average Price for Ayam, Buah and Sayur by Premise type and Distrcit', divider='rainbow')
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
