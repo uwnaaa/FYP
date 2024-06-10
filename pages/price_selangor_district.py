@@ -33,28 +33,6 @@ district = df_ayam['district']
 price = df_ayam['price']
 
 # Plotting
-fig, ax = plt.subplots(figsize=(12, 6))
-
-# Plot each premise type
-for i, premise_type in enumerate(premise_types):
-    pos = x + i * width - width * (n_types / 2)
-    ax.bar(pos, avg_price[premise_type], width, label=premise_type)
-
-# Adding labels and title
-ax.set_xlabel('Districts')
-ax.set_ylabel('Average Price')
-ax.set_title('Average Price Ayam by Premise Type and District')
-ax.set_xticks(x)
-ax.set_xticklabels(districts)
-
-# Adding legend
-ax.legend(title='Premise Type', loc='upper right')
-
-plt.tight_layout()
-plt.show()
-st.pyplot(plt.gcf())
-
-# Plotting
 tab1, tab2, tab3 = st.tabs(["Average Price Ayam", "Average Price Buah", "Average Price Sayur"])
 with tab1:
    st.header("Average Price Ayam by Premise Type and District")
