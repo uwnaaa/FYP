@@ -28,10 +28,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Extracting data for plotting
-states = df['Premise Type and District']
-income = df['Average Price Ayam']
-expenditure = df['Average Price Buah']
-poverty = df['Average Price Sayur']
+Premise Type and District = df['Premise Type and District']
+Ayam = df['Average Price Ayam']
+Buah = df['Average Price Buah']
+Sayur = df['Average Price Sayur']
 
 # Plotting
 tab1, tab2, tab3 = st.tabs(["Average Price Ayam", "Average Price Buah", "Average Price Sayur"])
