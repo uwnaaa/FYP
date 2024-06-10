@@ -92,6 +92,7 @@ df.loc[3:]
 
 
 ##############################################
+st.header('Correlation Analysis', divider='rainbow')
 import pandas as pd
 selected_columns = ['income_mean', 'expenditure_mean', 'poverty', 'mean_ayam', 'mean buah', 'mean sayur']
 df_selected = df[selected_columns]
