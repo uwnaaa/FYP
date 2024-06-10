@@ -1,3 +1,5 @@
+import streamlit as st
+st.header('Price Ayam in Selangor', divider='rainbow')
 import pandas as pd
 df_ayam = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_ayam.csv')
 df_ayam = df_ayam.drop(columns=['premise', 'address', 'state'])
@@ -5,6 +7,7 @@ df_ayam = df_ayam.drop(columns=['premise', 'address', 'state'])
 df_ayam
 
 ###############################
+st.header('Price Buah in Selangor', divider='rainbow')
 import pandas as pd
 df_buah = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_buah.csv')
 df_buah = df_buah.drop(columns=['premise', 'address', 'state'])
@@ -12,6 +15,7 @@ df_buah = df_buah.drop(columns=['premise', 'address', 'state'])
 df_buah
 
 ###############################
+st.header('Price Sayur in Selangor', divider='rainbow')
 import pandas as pd
 df_sayur = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_sayur.csv')
 df_sayur = df_sayur.drop(columns=['premise', 'address', 'state'])
@@ -27,23 +31,6 @@ import matplotlib.pyplot as plt
 premise_type = df_ayam['premise_type']
 district = df_ayam['district']
 price = df_ayam['price']
-
-# Calculate average price for each combination of district and premise type
-avg_price = df_ayam.groupby(['district', 'premise_type'])['price'].mean().unstack()
-
-# Extracting unique districts and premise types
-districts = avg_price.index
-premise_types = avg_price.columns
-
-# Number of districts and premise types
-n_districts = len(districts)
-n_types = len(premise_types)
-
-# Create an array for the x-axis positions
-x = np.arange(n_districts) * (1.5)
-
-# Width of the bars
-width = 0.2
 
 # Plotting
 fig, ax = plt.subplots(figsize=(12, 6))
