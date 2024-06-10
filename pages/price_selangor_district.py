@@ -20,9 +20,6 @@ df_sayur
 
 ###############################
 import streamlit as st
-st.header('Average Price for Ayam, Buah and Sayur by Premise type and Distrcit', divider='rainbow')
-
-import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -77,7 +74,7 @@ with tab1:
    plt.figure(figsize=(12, 18))
    # Bar chart for Ayam
    plt.subplot()
-   plt.bar(Premise Type and District, Average Price Ayam, color='skyblue', edgecolor='black', alpha=0.7)
+   plt.bar('Premise Type and District', 'Average Price Ayam', color='skyblue', edgecolor='black', alpha=0.7)
    plt.xlabel('Premise Type and District')
    plt.ylabel('Average Price Ayam')
    plt.title('Average Price Ayam by Premise Type and District')
@@ -92,7 +89,7 @@ with tab2:
 
    # Bar chart for Buah
    plt.subplot()
-   plt.bar(Premise Type and District, Average Price Buah, color='salmon', edgecolor='black', alpha=0.7)
+   plt.bar('Premise Type and District', 'Average Price Buah', color='salmon', edgecolor='black', alpha=0.7)
    plt.xlabel('Premise Type and District')
    plt.ylabel(' Average Price Buah')
    plt.title('Average Price Buah by Premise Type and District')
@@ -107,7 +104,7 @@ with tab3:
 
    # Bar chart for Sayur
    plt.subplot()
-   plt.bar(Premise Type and District, Average Price Sayur, color='lightgreen', edgecolor='black', alpha=0.7)
+   plt.bar('Premise Type and District', 'Average Price Sayur', color='lightgreen', edgecolor='black', alpha=0.7)
    plt.xlabel('Premise Type and District')
    plt.ylabel(' Average Price Sayur')
    plt.title('Average Price Sayur by Premise Type and District')
