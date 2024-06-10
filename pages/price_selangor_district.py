@@ -71,46 +71,46 @@ plt.show()
 st.pyplot(plt.gcf())
 
 # Plotting
-tab1, tab2, tab3 = st.tabs(["Average Price Ayam by Premise Type and District", "Average Price Buah by Premise Type and District", "Average Price Sayur by Premise Type and District"])
+tab1, tab2, tab3 = st.tabs(["Average Price Ayam", "Average Price Buah", "Average Price Sayur"])
 with tab1:
-   st.header("Average Price Ayam Premise Type and District")
+   st.header("Average Price Ayam by Premise Type and District")
    plt.figure(figsize=(12, 18))
-   # Bar chart for income
+   # Bar chart for Ayam
    plt.subplot()
-   plt.bar(states, income, color='skyblue', edgecolor='black', alpha=0.7)
+   plt.bar(Premise Type and District, Average Price Ayam, color='skyblue', edgecolor='black', alpha=0.7)
    plt.xlabel('Premise Type and District')
-   plt.ylabel('Income')
-   plt.title('Income by State')
+   plt.ylabel('Average Price Ayam')
+   plt.title('Average Price Ayam by Premise Type and District')
    plt.xticks(rotation=90)  # Rotate state names for better readability
    plt.tight_layout()
    plt.show()
    st.pyplot(plt.gcf())
   
 with tab2:
-   st.header("Expenditure by State")
+   st.header("Average Price Buah by Premise Type and District")
    plt.figure(figsize=(12, 18))
 
-   # Bar chart for expenditure
+   # Bar chart for Buah
    plt.subplot()
-   plt.bar(states, expenditure, color='salmon', edgecolor='black', alpha=0.7)
-   plt.xlabel('States')
-   plt.ylabel('Expenditure')
-   plt.title('Expenditure by State')
+   plt.bar(Premise Type and District, Average Price Buah, color='salmon', edgecolor='black', alpha=0.7)
+   plt.xlabel('Premise Type and District')
+   plt.ylabel(' Average Price Buah')
+   plt.title('Average Price Buah by Premise Type and District')
    plt.xticks(rotation=90)  # Rotate state names for better readability
    plt.tight_layout()
    plt.show()
    st.pyplot(plt.gcf())
 
 with tab3:
-   st.header("Poverty by State")
+   st.header("Average Price Sayur by Premise Type and District")
    plt.figure(figsize=(12, 18))
 
-   # Bar chart for poverty
+   # Bar chart for Sayur
    plt.subplot()
-   plt.bar(states, poverty, color='lightgreen', edgecolor='black', alpha=0.7)
-   plt.xlabel('States')
-   plt.ylabel('Poverty')
-   plt.title('Poverty by State')
+   plt.bar(Premise Type and District, Average Price Sayur, color='lightgreen', edgecolor='black', alpha=0.7)
+   plt.xlabel('Premise Type and District')
+   plt.ylabel(' Average Price Sayur')
+   plt.title('Average Price Sayur by Premise Type and District')
    plt.xticks(rotation=90)  # Rotate state names for better readability
    plt.tight_layout()
    plt.show()
