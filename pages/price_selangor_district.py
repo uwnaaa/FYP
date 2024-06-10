@@ -27,6 +27,10 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Read the data from a CSV file into a pandas DataFrame
+df = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/income_state.csv')
+
+df
 # Extracting data for plotting
 Premise_Type = df['Premise Type and District']
 Ayam = df['Average Price Ayam']
