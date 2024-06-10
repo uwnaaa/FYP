@@ -28,7 +28,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Extracting data for plotting
-Premise Type and District = df['Premise Type and District']
+Premise Type = df['Premise Type and District']
 Ayam = df['Average Price Ayam']
 Buah = df['Average Price Buah']
 Sayur = df['Average Price Sayur']
