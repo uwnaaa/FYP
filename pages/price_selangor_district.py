@@ -23,6 +23,7 @@ df_sayur = df_sayur.drop(columns=['premise', 'address', 'state'])
 df_sayur
 
 ###############################
+import streamlit as st
 st.header('Average Price Ayam by Premise Type and District', divider='rainbow')
 import numpy as np
 
