@@ -228,8 +228,6 @@ URL_DATA = 'https://storage.data.gov.my/pricecatcher/lookup_premise.parquet'
 
 location = pd.read_parquet(URL_DATA)
 if 'date' in location.columns: location['date'] = pd.to_datetime(location['date'])
-
-print(location)
 df_sayur.drop(columns=['premise', 'address', 'state'])
 df_sayur
 
