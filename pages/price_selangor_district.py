@@ -75,6 +75,7 @@ plt.show()
 #######################################
 st.header('Average Price Buah by Premise Type and District', divider='rainbow')
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Extracting data for plotting
 premise_type = df_buah['premise_type']
@@ -123,6 +124,7 @@ plt.show()
 #######################################
 st.header('Average Price Sayur by Premise Type and District', divider='rainbow')
 import numpy as np
+import matplotlib.pyplot as plt
 
 # Extracting data for plotting
 premise_type = df_sayur['premise_type']
