@@ -24,8 +24,9 @@ df_sayur
 
 ###############################
 import streamlit as st
-st.header('Average Price Ayam by Premise Type and District', divider='rainbow')
+import matplotlib.pyplot as plt
 import numpy as np
+st.header('Average Price Ayam by Premise Type and District', divider='rainbow')
 
 # Extracting data for plotting
 premise_type = df_ayam['premise_type']
