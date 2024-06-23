@@ -202,7 +202,9 @@ location = pd.read_parquet(URL_DATA)
 if 'date' in location.columns: location['date'] = pd.to_datetime(location['date'])
 
 print(location)
+df_ayam = df_ayam.merge(location, on = 'premise_code', how = 'left')
 df_ayam.drop(columns=['premise', 'address', 'state'])
+df_ayam
 
 
 
