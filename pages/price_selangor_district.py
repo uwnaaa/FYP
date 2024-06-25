@@ -193,7 +193,7 @@ correlation_matrix = df_selected.corr()
 
 
 ############################################
-st.header('DF Ayam', divider='rainbow')
+st.header('DF Chicken', divider='rainbow')
 import pandas as pd
 
 URL_DATA = 'https://storage.data.gov.my/pricecatcher/lookup_premise.parquet'
@@ -207,7 +207,7 @@ df_ayam
 
 
 ##########################################
-st.header('DF Buah', divider='rainbow')
+st.header('DF Fruit', divider='rainbow')
 import pandas as pd
 
 URL_DATA = 'https://storage.data.gov.my/pricecatcher/lookup_premise.parquet'
@@ -221,7 +221,7 @@ df_buah
 
 
 ############################################
-st.header('DF Sayur', divider='rainbow')
+st.header('DF Vegetable', divider='rainbow')
 import pandas as pd
 
 URL_DATA = 'https://storage.data.gov.my/pricecatcher/lookup_premise.parquet'
