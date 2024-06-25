@@ -202,7 +202,7 @@ location = pd.read_parquet(URL_DATA)
 if 'date' in location.columns: location['date'] = pd.to_datetime(location['date'])
 
 print(location)
-df_ayam.drop(columns=['premise', 'address', 'state'])
+df_ayam = df_ayam.merge(location, on = 'premise_code', how = 'left')
 df_ayam
 
 
@@ -216,7 +216,7 @@ location = pd.read_parquet(URL_DATA)
 if 'date' in location.columns: location['date'] = pd.to_datetime(location['date'])
 
 print(location)
-df_buah.drop(columns=['premise', 'address', 'state'])
+df_buah = df_buah.merge(location, on = 'premise_code', how = 'left')
 df_buah
 
 
@@ -228,7 +228,7 @@ URL_DATA = 'https://storage.data.gov.my/pricecatcher/lookup_premise.parquet'
 
 location = pd.read_parquet(URL_DATA)
 if 'date' in location.columns: location['date'] = pd.to_datetime(location['date'])
-df_sayur.drop(columns=['premise', 'address', 'state'])
+df_sayur = df_sayur.merge(location, on = 'premise_code', how = 'left')
 df_sayur
 
 
