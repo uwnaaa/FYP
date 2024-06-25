@@ -1,5 +1,5 @@
 import streamlit as st
-st.header('Price Ayam in Selangor', divider='rainbow')
+st.header('Chicken Price in Selangor', divider='rainbow')
 import pandas as pd
 df_ayam = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_ayam.csv')
 df_ayam = df_ayam.drop(columns=['premise', 'address', 'state'])
@@ -7,7 +7,7 @@ df_ayam = df_ayam.drop(columns=['premise', 'address', 'state'])
 df_ayam
 
 ###############################
-st.header('Price Buah in Selangor', divider='rainbow')
+st.header('Fruit Price in Selangor', divider='rainbow')
 import pandas as pd
 df_buah = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_buah.csv')
 df_buah = df_buah.drop(columns=['premise', 'address', 'state'])
@@ -15,7 +15,7 @@ df_buah = df_buah.drop(columns=['premise', 'address', 'state'])
 df_buah
 
 ###############################
-st.header('Price Sayur in Selangor', divider='rainbow')
+st.header('Vegetable Price in Selangor', divider='rainbow')
 import pandas as pd
 df_sayur = pd.read_csv('https://raw.githubusercontent.com/uwnaaa/FYP/main/df_sayur.csv')
 df_sayur = df_sayur.drop(columns=['premise', 'address', 'state'])
@@ -26,7 +26,7 @@ df_sayur
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
-st.header('Average Price Ayam by Premise Type and District', divider='rainbow')
+st.header('Average Chicken Price by Premise Type and District', divider='rainbow')
 
 # Extracting data for plotting
 premise_type = df_ayam['premise_type']
@@ -74,7 +74,7 @@ st.pyplot(plt.gcf())
 
 
 #######################################
-st.header('Average Price Buah by Premise Type and District', divider='rainbow')
+st.header('Average Fruit Price by Premise Type and District', divider='rainbow')
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -124,7 +124,7 @@ st.pyplot(plt.gcf())
 
 
 #######################################
-st.header('Average Price Sayur by Premise Type and District', divider='rainbow')
+st.header('Average Vegetable Price by Premise Type and District', divider='rainbow')
 import numpy as np
 import matplotlib.pyplot as plt
 
