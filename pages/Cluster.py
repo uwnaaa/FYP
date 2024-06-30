@@ -18,6 +18,7 @@ scaler = StandardScaler()
 scaled_data = scaler.fit_transform(data)
 
 ######################################################################
+st.header('Elbow Method', divider='rainbow')
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -62,6 +63,7 @@ kmeans.fit(scaled_data)
 df['cluster'] = kmeans.predict(scaled_data)
 
 ######################################################
+st.header('Cluster', divider='rainbow')
 import matplotlib.pyplot as plt
 import seaborn as sns
 
