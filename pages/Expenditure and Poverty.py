@@ -15,7 +15,7 @@ if submit:
     col2.title(f'{a+b:.2f}')
 
 # Load your model from the pkl file
-model = joblib.load('https://dy4vwv2skiydeypqkggmer.streamlit.app/Expenditure_and_Poverty.pkl')
+model = joblib.load('clustering_model.pkl')
 
 # Define function to predict poverty rate and cluster
 def predict_poverty_rate(income, expenditure):
