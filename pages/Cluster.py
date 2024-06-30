@@ -171,8 +171,8 @@ st.header('SSE Kmeans', divider='rainbow')
 import streamlit as st
 import pandas as pd
 import numpy as np
-st.write
 sse_org =kmeans.inertia_
+st.write("SSE of Given data =' , sse_org")
 print('SSE of Given data =' , sse_org)
 
 #######################################################################
@@ -181,5 +181,5 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.metrics import silhouette_score
-st.write
+st.write("Silhouette score of Given data\'s clsuter result =",silhouette_score(X_train_norm,kmeans.labels_))
 print('Silhouette score of Given data\'s clsuter result =',silhouette_score(X_train_norm,kmeans.labels_))
