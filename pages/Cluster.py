@@ -128,6 +128,42 @@ X_test_norm = preprocessing.normalize(X_test)
 st.write("X_train_norm shape:", X_train_norm.shape)
 st.write("X_test_norm shape:", X_test_norm.shape)
 
+######################################################################
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
+from sklearn.cluster import KMeans
+
+# Load the dataset
+url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
+df = pd.read_csv(url)
+
+# Inspect columns
+print(df.columns)
+
+# Select relevant columns
+X = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
+
+# Normalize the training and testing data
+X_train_norm = preprocessing.normalize(X_train)
+X_test_norm = preprocessing.normalize(X_test)
+
+# Apply K-Means clustering
+kmeans = KMeans(n_clusters=3, random_state=0, n_init='auto')
+kmeans.fit(X_train_norm)
+
+# Predict the clusters for the training data++++++Aawaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+train_clusters = kmeans.predict(X_train_norm)
+print("Training data cluster labels:", train_clusters)
+
+# Predict the clusters for the testing data
+test_clusters = kmeans.predict(X_test_norm)
+print("Testing data cluster labels:", test_clusters)
+
 ###################################################################################
 st.header('SSE Kmeans', divider='rainbow')
 import streamlit as st
