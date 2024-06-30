@@ -18,6 +18,7 @@ scaler = StandardScaler()
 scaled_data = scaler.fit_transform(data)
 
 ######################################################################
+import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
