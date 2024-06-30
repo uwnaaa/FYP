@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 
 col1,col2 = st.columns([1,2])
-col1.title(''Poverty Rate and Cluster Predictor:')
+col1.title('Poverty Rate and Cluster Predictor')
 
 with st.form('addition'):
     a = st.number_input('Income')
