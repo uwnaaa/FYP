@@ -17,6 +17,10 @@ if submit:
 # Load your model from the pkl file
 model = joblib.load('clustering_model.pkl')
 
+# Streamlit app
+def main():
+    st.title('Poverty Rate and Cluster Predictor')
+
 # Function to predict poverty rate and cluster
 def predict_poverty_rate_and_cluster(income, expenditure):
     # Assuming model.predict() returns a tuple (poverty_rate, cluster)
