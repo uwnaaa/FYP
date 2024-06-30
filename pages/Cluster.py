@@ -5,6 +5,7 @@ url = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
 df = pd.read_parquet(url)
 
 ####################################################################
+import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 # Select relevant columns for clustering
