@@ -74,6 +74,7 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 
 ######################################################
+st.header('Train and Test Shape', divider='rainbow')
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import streamlit as st
@@ -100,6 +101,7 @@ st.write("y_train shape:", y_train.shape)
 st.write("y_test shape:", y_test.shape)
 
 ####################################################
+st.header('Train and Test Norm Shape', divider='rainbow')
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
@@ -129,6 +131,7 @@ st.write("X_train_norm shape:", X_train_norm.shape)
 st.write("X_test_norm shape:", X_test_norm.shape)
 
 ##################################################
+st.header('Training and Testing Data Cluster Labels', divider='rainbow')
 import pandas as pd
 import streamlit as st
 from sklearn.model_selection import train_test_split
