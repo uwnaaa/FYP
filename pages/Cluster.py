@@ -18,8 +18,8 @@ scaler = StandardScaler()
 scaled_data = scaler.fit_transform(data)
 
 ######################################################################
-st.header('Elbow Method', divider='rainbow')
 import streamlit as st
+st.header('Elbow Method', divider='rainbow')
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
