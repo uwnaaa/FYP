@@ -161,9 +161,15 @@ test_clusters = kmeans.predict(X_test_norm)
 print("Testing data cluster labels:", test_clusters)
 
 ###################################################################################
+st.header('SSE Kmeans', divider='rainbow')
+import pandas as pd
+import numpy as np
 sse_org =kmeans.inertia_
 print('SSE of Given data =' , sse_org)
 
 #######################################################################
+st.header('Silhouette', divider='rainbow')
+import pandas as pd
+import numpy as np
 from sklearn.metrics import silhouette_score
 print('Silhouette score of Given data\'s clsuter result =',silhouette_score(X_train_norm,kmeans.labels_))
