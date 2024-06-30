@@ -44,6 +44,8 @@ plt.title('Elbow Method')
 plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
+plt.tight_layout()
+st.pyplot(plt.gcf())
 
 ####################################################
 from sklearn.cluster import KMeans
@@ -65,6 +67,8 @@ import seaborn as sns
 # Plot clusters
 sns.pairplot(df, hue='cluster', vars=columns_to_cluster)
 plt.show()
+plt.tight_layout()
+st.pyplot(plt.gcf())
 
 ######################################################
 import pandas as pd
