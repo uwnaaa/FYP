@@ -76,6 +76,7 @@ st.pyplot(plt.gcf())
 ######################################################
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import streamlit as st
 st.write
 
 # Load the dataset
@@ -102,6 +103,7 @@ print("y_test shape:", y_test.shape)
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
+import streamlit as st
 st.write
 
 # Load the dataset
@@ -128,6 +130,7 @@ print("X_test_norm shape:", X_test_norm.shape)
 
 ##################################################
 import pandas as pd
+import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
@@ -165,6 +168,7 @@ print("Testing data cluster labels:", test_clusters)
 
 ###################################################################################
 st.header('SSE Kmeans', divider='rainbow')
+import streamlit as st
 import pandas as pd
 import numpy as np
 st.write
@@ -173,6 +177,7 @@ print('SSE of Given data =' , sse_org)
 
 #######################################################################
 st.header('Silhouette', divider='rainbow')
+import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.metrics import silhouette_score
