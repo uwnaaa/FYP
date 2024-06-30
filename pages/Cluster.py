@@ -94,10 +94,10 @@ y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
 
 # Verify the split
-print("X_train shape:", X_train.shape)
-print("X_test shape:", X_test.shape)
-print("y_train shape:", y_train.shape)
-print("y_test shape:", y_test.shape)
+st.write("X_train shape:", X_train.shape)
+st.write("X_test shape:", X_test.shape)
+st.write("y_train shape:", y_train.shape)
+st.write("y_test shape:", y_test.shape)
 
 ####################################################
 import pandas as pd
@@ -125,8 +125,8 @@ X_train_norm = preprocessing.normalize(X_train)
 X_test_norm = preprocessing.normalize(X_test)
 
 # Verify the normalization
-print("X_train_norm shape:", X_train_norm.shape)
-print("X_test_norm shape:", X_test_norm.shape)
+st.write("X_train_norm shape:", X_train_norm.shape)
+st.write("X_test_norm shape:", X_test_norm.shape)
 
 ##################################################
 import pandas as pd
@@ -164,7 +164,7 @@ print("Training data cluster labels:", train_clusters)
 
 # Predict the clusters for the testing data
 test_clusters = kmeans.predict(X_test_norm)
-print("Testing data cluster labels:", test_clusters)
+st.write("Testing data cluster labels:", test_clusters)
 
 ###################################################################################
 st.header('SSE Kmeans', divider='rainbow')
