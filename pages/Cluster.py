@@ -6,6 +6,7 @@ df = pd.read_parquet(url)
 
 ####################################################################
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import StandardScaler
 
 # Select relevant columns for clustering
