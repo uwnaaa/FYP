@@ -7,9 +7,9 @@ col1,col2 = st.columns([1,2])
 col1.title('Poverty Rate Analysis')
 
 with st.form('addition'):
-    Income = st.number_input('Income')
-    Expenditure = st.number_input('Expenditure')
-    Submit = st.form_submit_button('Submit')
+    income = st.number_input('Income')
+    expenditure = st.number_input('Expenditure')
+    submit = st.form_submit_button('Submit')
 
 if submit:
     poverty_rate, cluster = predict_poverty_rate_and_cluster(income, expenditure)
