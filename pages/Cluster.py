@@ -22,40 +22,28 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
 
 # Load the parquet file
 url = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
 df = pd.read_parquet(url)
 
-# Extract the specified columns and drop rows with missing values
+# Extract the specified columns
 selected_columns = ['income_mean', 'expenditure_mean', 'gini', 'poverty']
 dataset = df[selected_columns].dropna().values
 
-# Scale the data
-scaler = StandardScaler()
-scaled_dataset = scaler.fit_transform(dataset)
-
 # Perform KMeans clustering
 WCSS = []
-
 for i in range(1, 20):
     kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
-    kmeans.fit(scaled_dataset)
+    kmeans.fit(dataset)
     WCSS.append(kmeans.inertia_)
 
 # Plot the WCSS
-plt.plot(range(1, 20), WCSS, marker='o')
+plt.plot(range(1, 20), WCSS)
 plt.title('Elbow Method')
 plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
-
-# Print the SSE for the given data with 3 clusters as an example
-kmeans = KMeans(n_clusters=3, init='k-means++', random_state=42)
-kmeans.fit(scaled_dataset)
-sse_org = kmeans.inertia_
-print('SSE of Given data with 3 clusters =', sse_org)
 
 ####################################################
 
