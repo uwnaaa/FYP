@@ -21,8 +21,9 @@ with st.form('addition'):
 
 if submit:
     poverty_rate, cluster = predict_poverty_rate_and_cluster(income, expenditure)
+    
 # Display results
- st.write(f"Predicted Poverty Rate:, {poverty_rate}%")
+st.write(f"Predicted Poverty Rate:, {poverty_rate}%")
 st.write(f"Cluster:, {cluster}")
 
 
