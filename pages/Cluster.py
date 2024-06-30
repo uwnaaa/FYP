@@ -78,7 +78,6 @@ st.header('Train and Test Shape', divider='rainbow')
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import streamlit as st
-st.write
 
 # Load the dataset
 url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
@@ -106,7 +105,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 import streamlit as st
-st.write
 
 # Load the dataset
 url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
@@ -137,7 +135,6 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from sklearn.cluster import KMeans
-st.write
 
 # Load the dataset
 url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
