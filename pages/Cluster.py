@@ -4,6 +4,7 @@ import pandas as pd
 url = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
 df = pd.read_parquet(url)
 
+####################################################################
 from sklearn.preprocessing import StandardScaler
 
 # Select relevant columns for clustering
@@ -14,6 +15,7 @@ data = df[columns_to_cluster]
 scaler = StandardScaler()
 scaled_data = scaler.fit_transform(data)
 
+######################################################################
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
