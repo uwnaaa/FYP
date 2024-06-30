@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 
 col1,col2 = st.columns([1,2])
-col1.title('Poverty Analysis:')
+col1.title(''Poverty Rate and Cluster Predictor:')
 
 with st.form('addition'):
     a = st.number_input('Income')
@@ -16,10 +16,6 @@ if submit:
 
 # Load your model from the pkl file
 model = joblib.load('pages/clustering_model.pkl')
-
-# Streamlit app
-def main():
-    st.title('Poverty Rate and Cluster Predictor')
 
 # Function to predict poverty rate and cluster
 def predict_poverty_rate_and_cluster(income, expenditure):
