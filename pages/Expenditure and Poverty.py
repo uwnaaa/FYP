@@ -4,7 +4,8 @@ import numpy as np
 import joblib
 # Load your model from the pkl file
 model = joblib.load('pages/clustering_model.pkl')
-
+poverty_rate = 0
+cluster = 0
 # Function to predict poverty rate and cluster
 def predict_poverty_rate_and_cluster(income, expenditure):
     # Assuming model.predict() returns a tuple (poverty_rate, cluster)
