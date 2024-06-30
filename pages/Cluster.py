@@ -46,7 +46,6 @@ plt.ylabel('WCSS')
 plt.show()
 
 ####################################################
-
 from sklearn.cluster import KMeans
 
 # Define the number of clusters
@@ -60,7 +59,6 @@ kmeans.fit(scaled_data)
 df['cluster'] = kmeans.predict(scaled_data)
 
 ######################################################
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -69,7 +67,6 @@ sns.pairplot(df, hue='cluster', vars=columns_to_cluster)
 plt.show()
 
 ######################################################
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -94,7 +91,6 @@ print("y_train shape:", y_train.shape)
 print("y_test shape:", y_test.shape)
 
 ####################################################
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
@@ -122,7 +118,6 @@ print("X_train_norm shape:", X_train_norm.shape)
 print("X_test_norm shape:", X_test_norm.shape)
 
 ##################################################
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
@@ -159,11 +154,9 @@ test_clusters = kmeans.predict(X_test_norm)
 print("Testing data cluster labels:", test_clusters)
 
 ###################################################################################
-
 sse_org =kmeans.inertia_
 print('SSE of Given data =' , sse_org)
 
 #######################################################################
-
 from sklearn.metrics import silhouette_score
 print('Silhouette score of Given data\'s clsuter result =',silhouette_score(X_train_norm,kmeans.labels_))
