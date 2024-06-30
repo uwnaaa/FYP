@@ -15,7 +15,7 @@ if submit:
     col2.title(f'{a+b:.2f}')
 
 # Load your model from the pkl file
-model = joblib.load('clustering_model.pkl')
+model = joblib.load('pages/clustering_model.pkl')
 
 # Streamlit app
 def main():
