@@ -172,7 +172,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 sse_org =kmeans.inertia_
-st.write("SSE of Given data =' , sse_org")
+st.write("SSE of Given data =" , sse_org)
 
 #######################################################################
 st.header('Silhouette', divider='rainbow')
