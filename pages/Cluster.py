@@ -156,7 +156,7 @@ X_test_norm = preprocessing.normalize(X_test)
 kmeans = KMeans(n_clusters=3, random_state=0, n_init='auto')
 kmeans.fit(X_train_norm)
 
-# Predict the clusters for the training data++++++Aawaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+# Predict the clusters for the training data
 train_clusters = kmeans.predict(X_train_norm)
 print("Training data cluster labels:", train_clusters)
 
