@@ -74,97 +74,164 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 
 ######################################################
-st.header('Train and Test Shape', divider='rainbow')
+st.header('DBSCAN', divider='rainbow')
 import pandas as pd
-from sklearn.model_selection import train_test_split
-import streamlit as st
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import DBSCAN
+from scipy.spatial.distance import cdist
+import matplotlib.pyplot as plt
 
-# Load the dataset
-url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
-df = pd.read_csv(url)
+# Load the parquet file
+url = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
+df = pd.read_parquet(url)
 
-# Inspect columns
+# Inspect the DataFrame
+print(df.head())
 print(df.columns)
 
-# Select relevant columns
-X = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]  # Replace with actual column names
-y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+# Assuming the dataset has columns 'income', 'expenditure', and 'poverty'
+# Make sure to update these column names based on the actual column names in the DataFrame
+income_col = 'income_mean'       # Replace with the actual column name for income
+expenditure_col = 'expenditure_mean'  # Replace with the actual column name for expenditure
+poverty_col = 'poverty'     # Replace with the actual column name for poverty
 
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
+# Step 2: Preprocess the data
+X = df[[income_col, expenditure_col]].values
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
 
-# Verify the split
-st.write("X_train shape:", X_train.shape)
-st.write("X_test shape:", X_test.shape)
-st.write("y_train shape:", y_train.shape)
-st.write("y_test shape:", y_test.shape)
+# Step 3: Apply DBSCAN Clustering
+model = DBSCAN(eps=0.5, min_samples=5)
+yhat = model.fit_predict(X_scaled)
 
-####################################################
-st.header('Train and Test Norm Shape', divider='rainbow')
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn import preprocessing
-import streamlit as st
+# Add cluster labels to the dataframe
+df['cluster'] = yhat
 
-# Load the dataset
-url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
-df = pd.read_csv(url)
+# Step 4: Analyze Clusters
+# Calculate mean income, mean expenditure, Gini coefficient, poverty rate, and SSE for each cluster
+results = []
+clusters = np.unique(yhat)
+for cluster in clusters:
+    cluster_data = df[df['cluster'] == cluster]
+    income_mean = cluster_data[income_col].mean()
+    expenditure_mean = cluster_data[expenditure_col].mean()
+    gini = (2 * np.sum(np.tril(cluster_data[income_col].values[:, None] + cluster_data[income_col].values)) / (len(cluster_data[income_col]) ** 2)) - 1
+    poverty_rate = cluster_data[poverty_col].mean() * 100  # Assuming poverty is a binary column
+    
+    # Calculate SSE
+    cluster_points = X_scaled[df['cluster'] == cluster]
+    if len(cluster_points) > 1:
+        centroid = np.mean(cluster_points, axis=0)
+        sse = np.sum(np.square(cdist(cluster_points, [centroid])))
+    else:
+        sse = 0  # SSE is zero if there's only one point in the cluster
 
-# Inspect columns
-print(df.columns)
+    results.append({
+        'cluster': cluster,
+        'income_mean': income_mean,
+        'expenditure_mean': expenditure_mean,
+        'gini': gini,
+        'poverty_rate': poverty_rate,
+        'sse': sse
+    })
 
-# Select relevant columns
-X = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
-y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+# Convert results to DataFrame
+results_df = pd.DataFrame(results)
 
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
+# Step 5: Visualize Clusters
+for cluster in clusters:
+    row_ix = np.where(yhat == cluster)
+    plt.scatter(X[row_ix, 0], X[row_ix, 1], label=f'Cluster {cluster}')
+plt.legend()
+plt.show()
+plt.tight_layout()
+st.pyplot(plt.gcf())
 
-# Normalize the training and testing data
-X_train_norm = preprocessing.normalize(X_train)
-X_test_norm = preprocessing.normalize(X_test)
-
-# Verify the normalization
-st.write("X_train_norm shape:", X_train_norm.shape)
-st.write("X_test_norm shape:", X_test_norm.shape)
-
-######################################################################
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn import preprocessing
-from sklearn.cluster import KMeans
-
-# Load the dataset
-url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
-df = pd.read_csv(url)
-
-# Inspect columns
-print(df.columns)
-
-# Select relevant columns
-X = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
-y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
-
-# Normalize the training and testing data
-X_train_norm = preprocessing.normalize(X_train)
-X_test_norm = preprocessing.normalize(X_test)
-
-# Apply K-Means clustering
-kmeans = KMeans(n_clusters=3, random_state=0, n_init='auto')
-kmeans.fit(X_train_norm)
-
-# Predict the clusters for the training data
-train_clusters = kmeans.predict(X_train_norm)
-print("Training data cluster labels:", train_clusters)
-
-# Predict the clusters for the testing data
-test_clusters = kmeans.predict(X_test_norm)
-print("Testing data cluster labels:", test_clusters)
+# Print results
+print(results_df)
 
 ###################################################################################
+st.header('Hierarchical', divider='rainbow')
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+import matplotlib.pyplot as plt
+from scipy.spatial.distance import cdist
+
+# Load the data
+url = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
+df = pd.read_parquet(url)
+
+# Inspect the DataFrame
+print(df.head())
+print(df.columns)
+
+# Assuming the dataset has columns 'income', 'expenditure', and 'poverty'
+# Make sure to update these column names based on the actual column names in the DataFrame
+income_col = 'income_mean'       # Replace with the actual column name for income
+expenditure_col = 'expenditure_mean'  # Replace with the actual column name for expenditure
+poverty_col = 'poverty'     # Replace with the actual column name for poverty
+
+# Step 2: Preprocess the data
+X = df[[income_col, expenditure_col]].values
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Step 3: Apply Hierarchical Clustering
+# Using AgglomerativeClustering
+model = AgglomerativeClustering(n_clusters=3, affinity='euclidean', linkage='ward')
+yhat = model.fit_predict(X_scaled)
+
+# Add cluster labels to the dataframe
+df['cluster'] = yhat
+
+# Step 4: Analyze Clusters
+# Calculate mean income, mean expenditure, Gini coefficient, poverty rate, and SSE for each cluster
+results = []
+clusters = np.unique(yhat)
+for cluster in clusters:
+    cluster_data = df[df['cluster'] == cluster]
+    income_mean = cluster_data[income_col].mean()
+    expenditure_mean = cluster_data[expenditure_col].mean()
+    gini = (2 * np.sum(np.tril(cluster_data[income_col].values[:, None] + cluster_data[income_col].values)) / (len(cluster_data[income_col]) ** 2)) - 1
+    poverty_rate = cluster_data[poverty_col].mean() * 100  # Assuming poverty is a binary column
+    
+    # Calculate SSE
+    cluster_points = X_scaled[df['cluster'] == cluster]
+    if len(cluster_points) > 1:
+        centroid = np.mean(cluster_points, axis=0)
+        sse = np.sum(np.square(cdist(cluster_points, [centroid])))
+    else:
+        sse = 0  # SSE is zero if there's only one point in the cluster
+
+    results.append({
+        'cluster': cluster,
+        'income_mean': income_mean,
+        'expenditure_mean': expenditure_mean,
+        'gini': gini,
+        'poverty_rate': poverty_rate,
+        'sse': sse
+    })
+
+# Convert results to DataFrame
+results_df = pd.DataFrame(results)
+
+# Step 5: Visualize Clusters
+for cluster in clusters:
+    row_ix = np.where(yhat == cluster)
+    plt.scatter(X[row_ix, 0], X[row_ix, 1], label=f'Cluster {cluster}')
+plt.legend()
+plt.show()
+plt.tight_layout()
+st.pyplot(plt.gcf())
+
+# Print results
+print(results_df)
+
+#####################################################################
 st.header('SSE Kmeans', divider='rainbow')
 import streamlit as st
 import pandas as pd
