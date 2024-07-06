@@ -133,10 +133,31 @@ st.write("SSE of Given data =" , sse_org)
 ###############################################################
 st.header('Silhouette', divider='rainbow')
 import streamlit as st
-import pandas as pd
-import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import silhouette_score
-st.write("Silhouette score of Given data\'s clsuter result =",silhouette_score(X_train_norm,kmeans.labels_))
+import numpy as np
+
+# Sample data
+X = np.random.rand(100, 5)  # Replace with your actual data
+
+# Normalize the data
+scaler = StandardScaler()
+X_train_norm = scaler.fit_transform(X)
+
+# Perform KMeans clustering
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans.fit(X_train_norm)
+
+# Check the shapes of the arrays
+print("Shape of X_train_norm:", X_train_norm.shape)  # Should be (n_samples, n_features)
+print("Shape of kmeans.labels_:", kmeans.labels_.shape)  # Should be (n_samples,)
+
+# Calculate silhouette score
+silhouette_avg = silhouette_score(X_train_norm, kmeans.labels_)
+
+# Display the silhouette score in Streamlit
+st.write("Silhouette score of Given data's cluster result =", silhouette_avg)
 
 #####################################################################################################
 st.header('DBSCAN', divider='rainbow')
