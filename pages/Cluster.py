@@ -189,7 +189,7 @@ for cluster in clusters:
     cluster_points = X_scaled[df['cluster'] == cluster]
     if len(cluster_points) > 1:
         centroid = np.mean(cluster_points, axis=0)
-        st.write sse = np.sum(np.square(cdist(cluster_points, [centroid])))
+        sse = np.sum(np.square(cdist(cluster_points, [centroid])))
     else:
         sse = 0  # SSE is zero if there's only one point in the cluster
 
