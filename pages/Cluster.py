@@ -79,6 +79,13 @@ import pandas as pd
 import numpy as np
 sse_org =kmeans.inertia_
 st.write("SSE of Given data =" , sse_org)
+###############################################################
+st.header('Silhouette', divider='rainbow')
+import streamlit as st
+import pandas as pd
+import numpy as np
+from sklearn.metrics import silhouette_score
+st.write("Silhouette score of Given data\'s clsuter result =",silhouette_score(X_train_norm,kmeans.labels_))
 
 ######################################################
 st.header('Testing and Test', divider='rainbow')
@@ -262,11 +269,3 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 # Print results
 print(results_df)
-
-#####################################################################
-st.header('Silhouette', divider='rainbow')
-import streamlit as st
-import pandas as pd
-import numpy as np
-from sklearn.metrics import silhouette_score
-st.write("Silhouette score of Given data\'s clsuter result =",silhouette_score(X_train_norm,kmeans.labels_))
