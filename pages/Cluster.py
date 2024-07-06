@@ -72,6 +72,13 @@ sns.pairplot(df, hue='cluster', vars=columns_to_cluster)
 plt.show()
 plt.tight_layout()
 st.pyplot(plt.gcf())
+########################################################
+st.header('SSE Kmeans', divider='rainbow')
+import streamlit as st
+import pandas as pd
+import numpy as np
+sse_org =kmeans.inertia_
+st.write("SSE of Given data =" , sse_org)
 
 ######################################################
 st.header('Testing and Test', divider='rainbow')
@@ -175,15 +182,7 @@ st.pyplot(plt.gcf())
 
 # Print results
 print(results_df)
-
-#####################################################################
-st.header('SSE Kmeans', divider='rainbow')
-import streamlit as st
-import pandas as pd
-import numpy as np
-sse_org =kmeans.inertia_
-st.write("SSE of Given data =" , sse_org)
-
+st.write("SSE of DBSCAN")
 #######################################################################
 st.header('Silhouette', divider='rainbow')
 import streamlit as st
