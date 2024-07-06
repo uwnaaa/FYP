@@ -184,6 +184,7 @@ st.pyplot(plt.gcf())
 print(results_df)
 
 #######################################################################
+st.header('Hierarchical Clustering', divider='rainbow')
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -213,8 +214,9 @@ X_scaled = scaler.fit_transform(X)
 
 # Step 3: Apply Hierarchical Clustering
 # Using AgglomerativeClustering
-model = AgglomerativeClustering(n_clusters=3, affinity='euclidean', linkage='ward')
-yhat = model.fit_predict(X_scaled)
+clustering = AgglomerativeClustering(n_clusters=3, metric='euclidean', linkage='ward')
+clustering.fit(X)
+
 
 # Add cluster labels to the dataframe
 df['cluster'] = yhat
