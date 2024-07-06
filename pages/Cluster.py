@@ -253,12 +253,11 @@ st.header('Hierarchical Clustering', divider='rainbow')
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import AgglomerativeClustering
-from scipy.cluster.hierarchy import dendrogram, linkage
-import matplotlib.pyplot as plt
+from sklearn.cluster import DBSCAN, AgglomerativeClustering
 from scipy.spatial.distance import cdist
+import matplotlib.pyplot as plt
 
-# Load the data
+# Load the parquet file
 url = 'https://storage.dosm.gov.my/hies/hies_district.parquet'
 df = pd.read_parquet(url)
 
@@ -266,38 +265,50 @@ df = pd.read_parquet(url)
 print(df.head())
 print(df.columns)
 
-# Assuming the dataset has columns 'income', 'expenditure', and 'poverty'
-# Make sure to update these column names based on the actual column names in the DataFrame
+# Assuming the dataset has columns 'income_mean', 'expenditure_mean', and 'poverty'
 income_col = 'income_mean'       # Replace with the actual column name for income
 expenditure_col = 'expenditure_mean'  # Replace with the actual column name for expenditure
 poverty_col = 'poverty'     # Replace with the actual column name for poverty
+
+# Check for NaNs
+print(df.isnull().sum())
 
 # Step 2: Preprocess the data
 X = df[[income_col, expenditure_col]].values
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Step 3: Apply Hierarchical Clustering
-# Using AgglomerativeClustering
-model = AgglomerativeClustering(n_clusters=3, affinity='euclidean', linkage='ward')
-yhat = model.fit_predict(X_scaled)
+# Step 3: Apply DBSCAN Clustering
+dbscan_model = DBSCAN(eps=0.5, min_samples=5)
+yhat_dbscan = dbscan_model.fit_predict(X_scaled)
+
+# Apply Agglomerative Clustering
+agglomerative_model = AgglomerativeClustering(n_clusters=3, metric='euclidean', linkage='ward')
+yhat_agg = agglomerative_model.fit_predict(X_scaled)
 
 # Add cluster labels to the dataframe
-df['cluster'] = yhat
+df['dbscan_cluster'] = yhat_dbscan
+df['agg_cluster'] = yhat_agg
 
 # Step 4: Analyze Clusters
 # Calculate mean income, mean expenditure, Gini coefficient, poverty rate, and SSE for each cluster
 results = []
-clusters = np.unique(yhat)
+clusters = np.unique(yhat_agg)
 for cluster in clusters:
-    cluster_data = df[df['cluster'] == cluster]
+    cluster_data = df[df['agg_cluster'] == cluster]
     income_mean = cluster_data[income_col].mean()
     expenditure_mean = cluster_data[expenditure_col].mean()
-    gini = (2 * np.sum(np.tril(cluster_data[income_col].values[:, None] + cluster_data[income_col].values)) / (len(cluster_data[income_col]) ** 2)) - 1
+
+    # Calculate Gini coefficient
+    income_vals = cluster_data[income_col].values
+    income_sorted = np.sort(income_vals)
+    index = np.arange(1, len(income_vals) + 1)
+    gini = (2 * np.sum(index * income_sorted)) / (len(income_vals) * np.sum(income_sorted)) - (len(income_vals) + 1) / len(income_vals)
+
     poverty_rate = cluster_data[poverty_col].mean() * 100  # Assuming poverty is a binary column
 
     # Calculate SSE
-    cluster_points = X_scaled[df['cluster'] == cluster]
+    cluster_points = X_scaled[df['agg_cluster'] == cluster]
     if len(cluster_points) > 1:
         centroid = np.mean(cluster_points, axis=0)
         sse = np.sum(np.square(cdist(cluster_points, [centroid])))
@@ -317,10 +328,14 @@ for cluster in clusters:
 results_df = pd.DataFrame(results)
 
 # Step 5: Visualize Clusters
+plt.figure(figsize=(10, 7))
 for cluster in clusters:
-    row_ix = np.where(yhat == cluster)
+    row_ix = np.where(yhat_agg == cluster)
     plt.scatter(X[row_ix, 0], X[row_ix, 1], label=f'Cluster {cluster}')
 plt.legend()
+plt.xlabel('Income')
+plt.ylabel('Expenditure')
+plt.title('Agglomerative Clusters')
 plt.show()
 plt.tight_layout()
 st.pyplot(plt.gcf())
