@@ -63,7 +63,7 @@ kmeans.fit(scaled_data)
 df['cluster'] = kmeans.predict(scaled_data)
 
 ######################################################
-st.header('Cluster', divider='rainbow')
+st.header('Kmean', divider='rainbow')
 import matplotlib.pyplot as plt
 import seaborn as sns
 
