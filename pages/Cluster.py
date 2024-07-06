@@ -74,6 +74,31 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 
 ######################################################
+st.header('Testing and Test', divider='rainbow')
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Load the dataset
+url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
+df = pd.read_csv(url)
+
+# Inspect columns
+print(df.columns)
+
+# Select relevant columns
+X = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]  # Replace with actual column names
+y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
+
+# Verify the split
+st.write("X_train shape:", X_train.shape)
+st.write("X_test shape:", X_test.shape)
+st.write("y_train shape:", y_train.shape)
+st.write("y_test shape:", y_test.shape)
+
+#####################################################################################################
 st.header('DBSCAN', divider='rainbow')
 import pandas as pd
 import numpy as np
