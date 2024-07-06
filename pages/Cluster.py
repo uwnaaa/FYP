@@ -73,6 +73,33 @@ plt.show()
 plt.tight_layout()
 st.pyplot(plt.gcf())
 ########################################################
+st.header('Training and Testing Norm Shape', divider='rainbow')
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
+
+# Load the dataset
+url = 'https://storage.dosm.gov.my/hies/hies_district.csv'
+df = pd.read_csv(url)
+
+# Inspect columns
+print(df.columns)
+
+# Select relevant columns
+X = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+y = df[['income_mean', 'gini', 'expenditure_mean', 'poverty']]
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
+
+# Normalize the training and testing data
+X_train_norm = preprocessing.normalize(X_train)
+X_test_norm = preprocessing.normalize(X_test)
+
+# Verify the normalization
+st.write("X_train_norm shape:", X_train_norm.shape)
+st.write("X_test_norm shape:", X_test_norm.shape)
+#############################################################
 st.header('SSE Kmeans', divider='rainbow')
 import streamlit as st
 import pandas as pd
@@ -162,7 +189,7 @@ for cluster in clusters:
     cluster_points = X_scaled[df['cluster'] == cluster]
     if len(cluster_points) > 1:
         centroid = np.mean(cluster_points, axis=0)
-        sse = np.sum(np.square(cdist(cluster_points, [centroid])))
+        st.write sse = np.sum(np.square(cdist(cluster_points, [centroid])))
     else:
         sse = 0  # SSE is zero if there's only one point in the cluster
 
