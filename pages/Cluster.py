@@ -243,7 +243,8 @@ plt.xlabel('Income')
 plt.ylabel('Expenditure')
 plt.title('DBSCAN Clusters')
 plt.show()
-
+plt.tight_layout()
+st.pyplot(plt.gcf())
 # Print results
 print(results_df)
 
@@ -278,9 +279,8 @@ X_scaled = scaler.fit_transform(X)
 
 # Step 3: Apply Hierarchical Clustering
 # Using AgglomerativeClustering
-clustering = AgglomerativeClustering(n_clusters=3, metric='euclidean', linkage='ward')
-clustering.fit(X)
-
+model = AgglomerativeClustering(n_clusters=3, affinity='euclidean', linkage='ward')
+yhat = model.fit_predict(X_scaled)
 
 # Add cluster labels to the dataframe
 df['cluster'] = yhat
