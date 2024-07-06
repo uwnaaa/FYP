@@ -258,20 +258,10 @@ for cluster in clusters:
     plt.scatter(X[row_ix, 0], X[row_ix, 1], label=f'Cluster {cluster}')
 plt.legend()
 plt.show()
-
-# Print results
-print(results_df)
-
-# Step 6: Dendrogram
-linked = linkage(X_scaled, 'ward')
-plt.figure(figsize=(10, 7))
-dendrogram(linked,
-            orientation='top',
-            distance_sort='descending',
-            show_leaf_counts=True)
-plt.show()
 plt.tight_layout()
 st.pyplot(plt.gcf())
+# Print results
+print(results_df)
 
 #####################################################################
 st.header('Silhouette', divider='rainbow')
