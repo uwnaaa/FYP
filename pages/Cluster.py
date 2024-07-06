@@ -176,11 +176,13 @@ df = pd.read_parquet(url)
 print(df.head())
 print(df.columns)
 
-# Assuming the dataset has columns 'income', 'expenditure', and 'poverty'
-# Make sure to update these column names based on the actual column names in the DataFrame
+# Assuming the dataset has columns 'income_mean', 'expenditure_mean', and 'poverty'
 income_col = 'income_mean'       # Replace with the actual column name for income
 expenditure_col = 'expenditure_mean'  # Replace with the actual column name for expenditure
 poverty_col = 'poverty'     # Replace with the actual column name for poverty
+
+# Check for NaNs
+print(df.isnull().sum())
 
 # Step 2: Preprocess the data
 X = df[[income_col, expenditure_col]].values
@@ -202,9 +204,15 @@ for cluster in clusters:
     cluster_data = df[df['cluster'] == cluster]
     income_mean = cluster_data[income_col].mean()
     expenditure_mean = cluster_data[expenditure_col].mean()
-    gini = (2 * np.sum(np.tril(cluster_data[income_col].values[:, None] + cluster_data[income_col].values)) / (len(cluster_data[income_col]) ** 2)) - 1
+
+    # Calculate Gini coefficient
+    income_vals = cluster_data[income_col].values
+    income_sorted = np.sort(income_vals)
+    index = np.arange(1, len(income_vals) + 1)
+    gini = (2 * np.sum(index * income_sorted)) / (len(income_vals) * np.sum(income_sorted)) - (len(income_vals) + 1) / len(income_vals)
+
     poverty_rate = cluster_data[poverty_col].mean() * 100  # Assuming poverty is a binary column
-    
+
     # Calculate SSE
     cluster_points = X_scaled[df['cluster'] == cluster]
     if len(cluster_points) > 1:
@@ -226,13 +234,15 @@ for cluster in clusters:
 results_df = pd.DataFrame(results)
 
 # Step 5: Visualize Clusters
+plt.figure(figsize=(10, 7))
 for cluster in clusters:
     row_ix = np.where(yhat == cluster)
     plt.scatter(X[row_ix, 0], X[row_ix, 1], label=f'Cluster {cluster}')
 plt.legend()
+plt.xlabel('Income')
+plt.ylabel('Expenditure')
+plt.title('DBSCAN Clusters')
 plt.show()
-plt.tight_layout()
-st.pyplot(plt.gcf())
 
 # Print results
 print(results_df)
