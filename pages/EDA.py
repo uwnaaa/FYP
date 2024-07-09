@@ -64,7 +64,7 @@ with tab1:
   
 with tab2:
    st.header("Expenditure by State")
-   plt.figure(figsize=(12, 18))
+   plt.figure(figsize=(12, 10))
 
    # Bar chart for expenditure
    plt.subplot()
@@ -79,7 +79,7 @@ with tab2:
 
 with tab3:
    st.header("Poverty by State")
-   plt.figure(figsize=(12, 18))
+   plt.figure(figsize=(12, 10))
 
    # Bar chart for poverty
    plt.subplot()
