@@ -247,7 +247,7 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 # Print results
 print(results_df)
-st.write("sse DBSCAN=", cluster_points)
+st.write("sse DBSCAN=", cluster)
 #######################################################################
 st.header('Hierarchical Clustering', divider='rainbow')
 import pandas as pd
