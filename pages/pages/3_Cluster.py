@@ -247,7 +247,7 @@ plt.tight_layout()
 st.pyplot(plt.gcf())
 # Print results
 print(results_df)
-
+st.write(sse_df)
 #######################################################################
 st.header('Hierarchical Clustering', divider='rainbow')
 import pandas as pd
